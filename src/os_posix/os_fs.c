@@ -519,7 +519,7 @@ __posix_file_read(
     pfh = (WT_FILE_HANDLE_POSIX *)file_handle;
 
     __wt_verbose_debug2(session, WT_VERB_READ,
-      "read: %s, fd=%d, offset=%" PRId64 ", len=%" WT_SIZET_FMT, file_handle->name, pfh->fd, offset,
+      "oxcache read: %s, fd=%d, offset=%" PRId64 ", len=%" WT_SIZET_FMT, file_handle->name, pfh->fd, offset,
       len);
 
     /* Break reads larger than 1GB into 1GB chunks. */
@@ -560,7 +560,7 @@ __posix_file_read_mmap(
         goto use_syscall;
 
     __wt_verbose_debug2(session, WT_VERB_READ,
-      "read-mmap: %s, fd=%d, offset=%" PRId64 ", len=%" WT_SIZET_FMT
+      "oxcache read-mmap: %s, fd=%d, offset=%" PRId64 ", len=%" WT_SIZET_FMT
       ", mapped buffer: %p, mapped size = %" PRId64,
       file_handle->name, pfh->fd, offset, len, (void *)pfh->mmap_buf, pfh->mmap_size);
 
@@ -689,7 +689,7 @@ __posix_file_write(
     pfh = (WT_FILE_HANDLE_POSIX *)file_handle;
 
     __wt_verbose_debug2(session, WT_VERB_WRITE,
-      "write: %s, fd=%d, offset=%" PRId64 ", len=%" WT_SIZET_FMT, file_handle->name, pfh->fd,
+      "oxcache write: %s, fd=%d, offset=%" PRId64 ", len=%" WT_SIZET_FMT, file_handle->name, pfh->fd,
       offset, len);
 
     /* Break writes larger than 1GB into 1GB chunks. */
@@ -722,7 +722,7 @@ __posix_file_write_mmap(
     pfh = (WT_FILE_HANDLE_POSIX *)file_handle;
 
     __wt_verbose_debug2(session, WT_VERB_WRITE,
-      "write-mmap: %s, fd=%d, offset=%" PRId64 ", len=%" WT_SIZET_FMT
+      "oxcache write-mmap: %s, fd=%d, offset=%" PRId64 ", len=%" WT_SIZET_FMT
       ", mapped buffer: %p, mapped size = %" PRId64,
       file_handle->name, pfh->fd, offset, len, (void *)pfh->mmap_buf, pfh->mmap_size);
 
